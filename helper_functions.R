@@ -1,4 +1,4 @@
-
+#devtools::source_url("https://github.com/dizyd/functions/blob/master/helper_functions.R?raw=TRUE")
 
 
 # Function: Check if packages are installed, if not install and load them
@@ -35,3 +35,26 @@ save_res <- function(results,path,name){
   save(results,file=paste0(path,name,"_",date,".Rdata"))
   
 }
+
+# Function: Transform sigma to precision and reverse
+#'   Input: @sigma sigma
+#'          @tau   tau
+#   Output: either sigma or tau, depending on which input was provided
+
+sigma_tau <- function(tau = NA,sigma = NA){
+  
+  if(is.na(tau)){
+    tau= 1/(sigma^2)
+    return(tau)
+  }
+  
+  if(is.na(sigma)){
+    sigma = 1/sqrt(tau)
+    return(sigma)
+  }
+  
+}
+
+
+
+sigma_tau(sigma=10)
