@@ -55,6 +55,17 @@ sigma_tau <- function(tau = NA,sigma = NA){
   
 }
 
+# Function: Automatically look up error messages on Stackoverflow . THIS FUNCTION WAS WRITTEN BY https://github.com/dgrtwo/tracestack
 
 
-sigma_tau(sigma=10)
+tracestack <- function() {
+  last_error <- geterrmessage()
+  if (is.null(last_error)) {
+    stop("No error message available")
+  }
+  
+  query <- URLencode(paste("[r]", last_error))
+  browseURL(paste0("http://stackoverflow.com/search?q=", query))
+}
+
+
