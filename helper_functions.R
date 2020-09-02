@@ -60,9 +60,9 @@ sigma_tau <- function(tau = NA,sigma = NA){
 #   Output: Data.frame
 
 flattenlist     <- function(x){  
-  morelists <- sapply(x, function(xprime) class(xprime)[1]=="list")
-  out <- c(x[!morelists], unlist(x[morelists], recursive=FALSE))
-  if(sum(morelists)){ 
+  more_lists <- sapply(x, function(first_x) class(first_x)[1]=="list")
+  out        <- c(x[!more_lists], unlist(x[more_lists], recursive=FALSE))
+  if(sum(more_lists)){ 
     Recall(out)
   }else{
     return(out)
