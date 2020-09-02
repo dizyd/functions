@@ -55,7 +55,7 @@ sigma_tau <- function(tau = NA,sigma = NA){
   
 }
 
-# flatten a (nested) list to a data.frame
+# Function: flatten a (nested) list to a data.frame
 #'   Input: @x (nested) list
 #   Output: Data.frame
 
