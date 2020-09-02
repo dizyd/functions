@@ -55,17 +55,16 @@ sigma_tau <- function(tau = NA,sigma = NA){
   
 }
 
-# Function: Automatically look up error messages on Stackoverflow . THIS FUNCTION WAS WRITTEN BY https://github.com/dgrtwo/tracestack
+# flatten a (nested) list to a data.frame
+#'   Input: @x (nested) list
+#   Output: Data.frame
 
-
-tracestack <- function() {
-  last_error <- geterrmessage()
-  if (is.null(last_error)) {
-    stop("No error message available")
+flattenlist     <- function(x){  
+  morelists <- sapply(x, function(xprime) class(xprime)[1]=="list")
+  out <- c(x[!morelists], unlist(x[morelists], recursive=FALSE))
+  if(sum(morelists)){ 
+    Recall(out)
+  }else{
+    return(out)
   }
-  
-  query <- URLencode(paste("[r]", last_error))
-  browseURL(paste0("http://stackoverflow.com/search?q=", query))
 }
-
-
