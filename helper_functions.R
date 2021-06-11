@@ -72,7 +72,7 @@ flattenlist     <- function(x){
 
 # Function: prepare a Readme overview for a tidy data.frame
 #'   Input: @df   tidy data.frame
-#'          @desc variabel descriptions
+#'          @desc variable descriptions
 #'          @info additional info you might want to add before the data.frame, prints also the dimensions of the data.frame
 #'          @file name of the output file
 #   Output: saves .txt file in working directory
