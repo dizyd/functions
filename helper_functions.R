@@ -101,5 +101,17 @@ make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){
 }
 
 
+# Function: compute root-mean-squared-error between to vectors
+#'   Input: @x numeric vector
+#'          @y numeric vector
+#   Output: RMSE
 
+RMSE     <- function(x,y){  
+  
+
+  RMSE <- sqrt(mean((x-y)^2))
+  
+  return(RMSE)
+  
+}
 
