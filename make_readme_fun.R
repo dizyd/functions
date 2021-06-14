@@ -1,3 +1,6 @@
+# Load with:
+# devtools::source_url("https://github.com/dizyd/functions/blob/master/make_readme_fun.R?raw=TRUE")
+
 # Function: prepare a Readme overview for a tidy data.frame
 #'   Input: @df   data.frame
 #'          @desc variable descriptions
@@ -7,8 +10,12 @@
 
 make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){  
   
+  
   temp0 <- data.frame("Variable"    = names(df),
+                      "Type"        = sapply(df, class),
                       "Description" = desc)
+  
+  row.names(temp0) <- NULL
   
   # Start writing to the file
   sink(file)

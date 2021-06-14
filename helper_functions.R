@@ -79,8 +79,12 @@ flattenlist     <- function(x){
 
 make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){  
   
+  
   temp0 <- data.frame("Variable"    = names(df),
+                      "Type"        = sapply(df, class),
                       "Description" = desc)
+  
+  row.names(temp0) <- NULL
   
   # Start writing to the file
   sink(file)
@@ -95,3 +99,7 @@ make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){
   sink()
   
 }
+
+
+
+
