@@ -23,7 +23,7 @@ use_git()
 use_github(private=TRUE)
 
 # Create directories
-fs::dir_create(c("1 Models", "2 Data", "3 Scripts", "4 Plots", "5 Results", "6 Experiment"))
+fs::dir_create(c("1 Models", "2 Data", "3 Scripts", "4 Plots", "5 Results", "6 Experiment","7 Presentations"))
 
 # Add data directory and results to .gitignore
 cat("2 Data",   file = ".gitignore", append = TRUE, sep = "\n")
