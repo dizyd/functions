@@ -20,7 +20,7 @@ use_readme_md()
 
 # Set up git
 use_git()
-use_github
+use_github(private=TRUE)
 
 # Create directories
 fs::dir_create(c("1 Models", "2 Data", "3 Scripts", "4 Plots", "5 Results", "6 Experiment"))
