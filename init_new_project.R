@@ -1,5 +1,4 @@
 # This code creates a new R-Project, with readme, adds it to github, and creates folders
-
 library(usethis)
 
 # define project name
@@ -8,6 +7,13 @@ path    <- "D:/OneDrive/Promotion/1 Projects/"
 
 # Creates and switches you to project
 create_project(paste0(path, project))
+
+
+# Code for after the Project was created 
+library(usethis)
+
+# define project name
+project <- "myproject"
 
 # Add documentation
 use_readme_md()
