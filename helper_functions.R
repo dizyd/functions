@@ -77,7 +77,7 @@ flattenlist     <- function(x){
 #'          @file name of the output file
 #   Output: saves .txt file in working directory
 
-make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){  
+make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt",add_examples=TRUE){  
   
   
   temp0 <- data.frame("Variable"    = names(df),
@@ -85,6 +85,18 @@ make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){
                       "Description" = desc)
   
   row.names(temp0) <- NULL
+  
+  if(add_examples){
+    
+    temp_info <- df[sample(1:nrow(df),2),] %>%
+      t() %>%
+      as.data.frame() %>%
+      apply(., 1, paste, collapse=",") %>% 
+      unlist()
+    
+    names(temp_info) <- NULL
+    temp0 <- temp0 %>% add_column("example" = temp_info,.before = "Description")
+  }
   
   # Start writing to the file
   sink(file)
@@ -99,7 +111,6 @@ make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){
   sink()
   
 }
-
 
 # Function: compute root-mean-squared-error between to vectors
 #'   Input: @x numeric vector

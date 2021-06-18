@@ -6,9 +6,10 @@
 #'          @desc variable descriptions
 #'          @info additional info you might want to add before the data.frame, prints also the dimensions of the data.frame
 #'          @file name of the output file
+#'          @add_examples if examples of data in the variables should be added to the readme
 #   Output: saves .txt file in working directory
 
-make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){  
+make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt",add_examples=TRUE){  
   
   
   temp0 <- data.frame("Variable"    = names(df),
@@ -16,6 +17,18 @@ make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){
                       "Description" = desc)
   
   row.names(temp0) <- NULL
+  
+  if(add_examples){
+    
+    temp_info <- df[sample(1:nrow(df),2),] %>%
+      t() %>%
+      as.data.frame() %>%
+      apply(., 1, paste, collapse=",") %>% 
+      unlist()
+    
+    names(temp_info) <- NULL
+    temp0 <- temp0 %>% add_column("example" = temp_info,.before = "Description")
+  }
   
   # Start writing to the file
   sink(file)
@@ -30,3 +43,21 @@ make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt"){
   sink()
   
 }
+
+
+
+
+# Example:
+
+# df = data.frame("ID" = 1:50,
+#                 "cond" = sample(c("A","B"),50,replace=T),
+#                 "rt" = rnorm(50,500,40))
+# 
+# desc = c("unique numeric participant ID",
+#          "condition [A,B]",
+#          "average reaction time in ms")
+# 
+# make_df_readme(df = df,
+#                desc = desc,
+#                info = "Data of the experiment Hello World",
+#                add_examples=TRUE)
