@@ -27,7 +27,7 @@ make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt",add_examp
       unlist()
     
     names(temp_info) <- NULL
-    temp0 <- temp0 %>% add_column("example" = temp_info,.before = "Description")
+    temp0 <- temp0 %>% add_column("Example" = temp_info,.before = "Description")
   }
   
   # Start writing to the file
