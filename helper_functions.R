@@ -126,6 +126,33 @@ RMSE     <- function(x,y){
   
 }
 
+# Function: compute modus of a vector
+#'   Input: @x numeric vector
+#   Output: modus
+
+modus <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
 
 
+# Function: compute grid of unique combinations
+#'   Input: @x vector
+#'          @y vector
+#'          @include_eq include equal rows
+#   Output: modus
 
+
+expand_grid_unique <- function(x, y, include_eq=FALSE){
+  x <- unique(x)
+  
+  y <- unique(y)
+  
+  g <- function(i){
+    z <- setdiff(y, x[seq_len(i-include.equals)])
+    
+    if(length(z)) cbind(x[i], z, deparse.level=0)
+  }
+  
+  do.call(rbind, lapply(seq_along(x), g))
+}
