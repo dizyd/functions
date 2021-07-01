@@ -5,6 +5,7 @@ date: "Last Updated 01.07.2021"
 output:
   html_document:
      keep_md: yes
+     toc: yes
 ---
 
 ```{r setup, include=FALSE}
