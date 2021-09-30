@@ -149,7 +149,7 @@ expand_grid_unique <- function(x, y, include_eq=FALSE){
   y <- unique(y)
   
   g <- function(i){
-    z <- setdiff(y, x[seq_len(i-include.equals)])
+    z <- setdiff(y, x[seq_len(i-include_eq)])
     
     if(length(z)) cbind(x[i], z, deparse.level=0)
   }
