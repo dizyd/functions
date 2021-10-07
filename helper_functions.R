@@ -156,3 +156,19 @@ expand_grid_unique <- function(x, y, include_eq=FALSE){
   
   do.call(rbind, lapply(seq_along(x), g))
 }
+
+
+# Function: convinience function for printing mean and sd
+#'   Input: @x numeric vector
+#   Output: string with "M(SD )"
+# Packages: needs the papaja package to be loaded
+
+mean_sd <- function(x,digits=2,gt1=T){
+
+ 
+  m   <- mean(x)
+  std <- sd(x)
+  
+  return(paste0(printnum(m,digits=digits,gt1=gt1)," (",printnum(std,digits=digits,gt1=gt1),")"))
+  
+}
