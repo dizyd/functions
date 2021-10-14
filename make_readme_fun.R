@@ -9,7 +9,7 @@
 #'          @add_examples if examples of data in the variables should be added to the readme
 #   Output: saves .txt file in working directory
 
-make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt",add_examples=TRUE){  
+make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt",add_examples=TRUE,digits=2){  
   
   
   temp0 <- data.frame("Variable"    = names(df),
@@ -21,9 +21,10 @@ make_df_readme     <- function(df,desc,info = NULL,file = "readme.txt",add_examp
   if(add_examples){
     
     temp_info <- df[sample(1:nrow(df),2),] %>%
+     mutate_if(is.numeric,round,digits) %>% 
       t() %>%
       as.data.frame() %>%
-      apply(., 1, paste, collapse=",") %>% 
+      apply(., 1, paste, collapse=", ") %>% 
       unlist()
     
     names(temp_info) <- NULL
