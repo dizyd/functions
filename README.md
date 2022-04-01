@@ -17,6 +17,10 @@ This is the main file which contains several useful functions, for instance to c
 
 This file contains the code to create a new project, the necessary folder structure, the github repository and the readme file. To do this, it uses the `usethis` package.
 
+### `mds_helper.R` 
+
+This file contains the code of several useful helper functions for multidimensional scaling analysis, such as simulating or transforming data, or determining the best fitting number of dimensions via Cross-Validation or via BIC.
+
 ### `make_readme_fun.R`
 
 This file contains the `R`-code of the `make_df_readme()` function. This function returns a description of the variables contained in a data.frame in a `.txt` function. This file is then a usefull addition when you share your data files with your colleagues or put them on OSF (or just for yourself). The table returned is in Markdown format and thus can be easily copied into a github readme file or to the wiki on your OSF project.

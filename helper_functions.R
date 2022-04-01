@@ -172,3 +172,6 @@ mean_sd <- function(x,digits=2,gt1=T){
   return(paste0(printnum(m,digits=digits,gt1=gt1)," (",printnum(std,digits=digits,gt1=gt1),")"))
   
 }
+
+
+
